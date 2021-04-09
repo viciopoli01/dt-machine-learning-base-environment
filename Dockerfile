@@ -55,6 +55,8 @@ ENV LANG C.UTF-8
 ENV CUDA_VERSION "${CUDA_VERSION}"
 ENV CUDNN_VERSION 8.0
 
+RUN ln -s /usr/local/cuda-${CUDA_VERSION} /usr/local/cuda
+
 # add cuda to path
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:${LD_LIBRARY_PATH}"

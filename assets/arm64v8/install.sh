@@ -34,3 +34,5 @@ rm "/tmp/${TENSORRT_WHEEL_NAME}"
 
 # clean
 pip3 uninstall -y dataclasses
+
+pip3 install pycuda
