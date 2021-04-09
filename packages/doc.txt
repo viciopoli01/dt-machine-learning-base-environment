@@ -1,0 +1,70 @@
+&&&& RUNNING TensorRT.trtexec # /usr/src/tensorrt/bin/trtexec --onnx=yolov4_1_3_416_416_static.onnx --explicitBatch --saveEngine=yolov4_1_3_416_416_fp16.engine --workspace=1024 --fp16
+[03/30/2021-11:29:23] [I] === Model Options ===
+[03/30/2021-11:29:23] [I] Format: ONNX
+[03/30/2021-11:29:23] [I] Model: yolov4_1_3_416_416_static.onnx
+[03/30/2021-11:29:23] [I] Output:
+[03/30/2021-11:29:23] [I] === Build Options ===
+[03/30/2021-11:29:23] [I] Max batch: explicit
+[03/30/2021-11:29:23] [I] Workspace: 1024 MB
+[03/30/2021-11:29:23] [I] minTiming: 1
+[03/30/2021-11:29:23] [I] avgTiming: 8
+[03/30/2021-11:29:23] [I] Precision: FP32+FP16
+[03/30/2021-11:29:23] [I] Calibration: 
+[03/30/2021-11:29:23] [I] Safe mode: Disabled
+[03/30/2021-11:29:23] [I] Save engine: yolov4_1_3_416_416_fp16.engine
+[03/30/2021-11:29:23] [I] Load engine: 
+[03/30/2021-11:29:23] [I] Builder Cache: Enabled
+[03/30/2021-11:29:23] [I] NVTX verbosity: 0
+[03/30/2021-11:29:23] [I] Inputs format: fp32:CHW
+[03/30/2021-11:29:23] [I] Outputs format: fp32:CHW
+[03/30/2021-11:29:23] [I] Input build shapes: model
+[03/30/2021-11:29:23] [I] Input calibration shapes: model
+[03/30/2021-11:29:23] [I] === System Options ===
+[03/30/2021-11:29:23] [I] Device: 0
+[03/30/2021-11:29:23] [I] DLACore: 
+[03/30/2021-11:29:23] [I] Plugins:
+[03/30/2021-11:29:23] [I] === Inference Options ===
+[03/30/2021-11:29:23] [I] Batch: Explicit
+[03/30/2021-11:29:23] [I] Input inference shapes: model
+[03/30/2021-11:29:23] [I] Iterations: 10
+[03/30/2021-11:29:23] [I] Duration: 3s (+ 200ms warm up)
+[03/30/2021-11:29:23] [I] Sleep time: 0ms
+[03/30/2021-11:29:23] [I] Streams: 1
+[03/30/2021-11:29:23] [I] ExposeDMA: Disabled
+[03/30/2021-11:29:23] [I] Spin-wait: Disabled
+[03/30/2021-11:29:23] [I] Multithreading: Disabled
+[03/30/2021-11:29:23] [I] CUDA Graph: Disabled
+[03/30/2021-11:29:23] [I] Skip inference: Disabled
+[03/30/2021-11:29:23] [I] Inputs:
+[03/30/2021-11:29:23] [I] === Reporting Options ===
+[03/30/2021-11:29:23] [I] Verbose: Disabled
+[03/30/2021-11:29:23] [I] Averages: 10 inferences
+[03/30/2021-11:29:23] [I] Percentile: 99
+[03/30/2021-11:29:23] [I] Dump output: Disabled
+[03/30/2021-11:29:23] [I] Profile: Disabled
+[03/30/2021-11:29:23] [I] Export timing to JSON file: 
+[03/30/2021-11:29:23] [I] Export output to JSON file: 
+[03/30/2021-11:29:23] [I] Export profile to JSON file: 
+[03/30/2021-11:29:23] [I] 
+----------------------------------------------------------------
+Input filename:   yolov4_1_3_416_416_static.onnx
+ONNX IR version:  0.0.6
+Opset version:    11
+Producer name:    pytorch
+Producer version: 1.8
+Domain:           
+Model version:    0
+Doc string:       
+----------------------------------------------------------------
+[03/30/2021-11:29:25] [W] [TRT] onnx2trt_utils.cpp:220: Your ONNX model has been generated with INT64 weights, while TensorRT does not natively support INT64. Attempting to cast down to INT32.
+[03/30/2021-11:29:25] [W] [TRT] onnx2trt_utils.cpp:246: One or more weights outside the range of INT32 was clamped
+[03/30/2021-11:29:25] [W] [TRT] onnx2trt_utils.cpp:246: One or more weights outside the range of INT32 was clamped
+[03/30/2021-11:29:25] [W] [TRT] onnx2trt_utils.cpp:246: One or more weights outside the range of INT32 was clamped
+[03/30/2021-11:29:25] [W] [TRT] onnx2trt_utils.cpp:246: One or more weights outside the range of INT32 was clamped
+[03/30/2021-11:29:25] [W] [TRT] Output type must be INT32 for shape outputs
+[03/30/2021-11:34:17] [I] [TRT] Some tactics do not have sufficient workspace memory to run. Increasing workspace size may increase performance, please check verbose output.
+
+
+
+python3 demo_trt.py ../yolov4_1_3_416_416_fp16.engine data/dog.jpg 416 416
+
